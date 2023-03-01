@@ -14,17 +14,23 @@ function TodoList() {
             setTodo({ ...todo, [event.target.name]: event.target.value });
       }
 
+      const deleteTodo = (index) => {
+            const newTodos = [...todos];
+            newTodos.splice(index, 1);
+            setTodos(newTodos);
+      }
+
       return (
             <div> 
                   <h1>Todolist</h1>
                   <form onSubmit={addTodo}>
                         <p>Add todo:</p>
-                        <label for="date">
+                        <label htmlFor="date">
                               Date
                         </label>
 
                         <input type="date" id="date" name="date" value={todo.date} onChange={inputChanged} />
-                        <label for="desc">
+                        <label htmlFor="desc">
                               Description
                         </label>
                         <input type="text" id="desc" name="desc" value={todo.desc} onChange={inputChanged} />
@@ -36,6 +42,7 @@ function TodoList() {
                               <tr>
                                     <th>Date</th>
                                     <th>Description</th>
+                                    
                               </tr>
                         </thead>
                         <tbody>
@@ -43,6 +50,7 @@ function TodoList() {
                                     <tr key={index}>
                                           <td>{todo.date}</td>
                                           <td>{todo.desc}</td>
+                                          <td><button onClick={() => deleteTodo(index)}>Delete</button></td>
                                     </tr>
                               )}
                         </tbody>
