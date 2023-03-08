@@ -10,14 +10,18 @@ table {
   min-width: 400px;
   
 }
+
 table th {
   padding: 12px 15px;
   
 }
 
 tbody tr {
-  border-bottom: 5px rgb(122, 18, 18);
+  border-bottom: 1px solid rgb(197, 25, 25);
   background-color: #009879;
+}
+table tbody tr:nth-of-type(even) {
+  background-color: rgb(55, 54, 141);
 }
 
 thead tr {
