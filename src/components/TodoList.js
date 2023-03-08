@@ -12,8 +12,8 @@ function TodoList() {
 
 
       const columns = [
-            { field: 'description', sortable: true, filter: true, floatingFilter: true },
-            { field: 'date', sortable: true, filter: true, floatingFilter: true },
+            { field: 'description', sortable: true, filter: true, floatingFilter: true, },
+            { field: 'date', sortable: true, filter: true, floatingFilter: true , },
             {
                   field: 'priority', sortable: true, filter: true, floatingFilter: true,
                   cellStyle: params => params.value === "High" ? { color: 'red' } : { color: 'black' }
@@ -55,6 +55,7 @@ function TodoList() {
                         style={{ height: '700px', width: '70%', margin: 'auto' }} >
                         <AgGridReact
                               ref={gridRef}
+                              animateRows={true}
                               onGridReady={params => gridRef.current = params.api}
                               rowSelection="single"
                               columnDefs={columns}
