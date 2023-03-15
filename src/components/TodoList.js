@@ -5,6 +5,7 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 
 
+
 function TodoList() {
       const [todo, setTodo] = useState({ description: '', date: '', priority: '' });
       const [todos, setTodos] = useState([]);
@@ -43,7 +44,7 @@ function TodoList() {
 
 
       return (
-            <div>
+            <div className="todo">
                   <h1>Todolist</h1>
                   <input type="text" onChange={inputChanged} placeholder="Description" name="description" value={todo.description} />
                   <input type="date" onChange={inputChanged} placeholder="Date" name="date" value={todo.date} />
