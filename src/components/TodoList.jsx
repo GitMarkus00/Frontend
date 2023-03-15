@@ -7,6 +7,7 @@ import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import moment from "moment";
 
 function TodoList() {
   const [todo, setTodo] = useState({ description: '', date: null, priority: '' });
@@ -35,7 +36,8 @@ function TodoList() {
     };
 
     const dateChanged = (date) => {
-      setTodo({ ...todo, date: date });
+     const newDate = moment(date).format('DD/MM/YYYY');
+      setTodo({ ...todo, date: newDate });
     };
 
   const deleteTodo = () => {
@@ -52,7 +54,7 @@ function TodoList() {
     <div className='todo'>
       <h1>Todolist</h1>
       <TextField  onChange={inputChanged} label='Description' name='description' value={todo.description} />
-      <DatePicker onChange={dateChanged} label="DD/MM/Year" name="date" value={todo.date} />
+      <DatePicker inputFormat='ddMMyyyy' onChange={dateChanged} label="DD/MM/Year" name="date" value={todo.date} />
       <TextField  onChange={inputChanged} label='Priority' name='priority' value={todo.priority} />
       <Button onClick={addTodo} variant='contained' color='success' size='small'>
         Add
