@@ -24,13 +24,7 @@
   padding: 0 5rem;
 }
 
-.nav ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
+
 
 .nav a {
   color: inherit;

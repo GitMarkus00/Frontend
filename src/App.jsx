@@ -8,29 +8,24 @@ import { Contact } from './components/Contact';
 import { NotFound } from './components/NotFound';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { Tabs, Tab } from '@mui/material';
 
 function App( ) {
   return ( 
+    
     <LocalizationProvider dateAdapter={AdapterDayjs}>
+      
     <>
-      <nav className="nav">
-        <h1>React router</h1>
-        <ul>
-          <li className="active">
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/todolist">Todolist</Link>
-          </li>
-
-        </ul>
-      </nav>
+    <nav className="nav">
+          <h1>React router</h1>
+          <Tabs value={window.location.pathname}>
+          
+            <Tab label="Home" textColor="secondary" value="/" component={Link} to="/" />
+            <Tab label="About" textColor="secondary" value="/about" component={Link} to="/about" />
+            <Tab label="Contact" textColor="secondary" value="/contact" component={Link} to="/contact" />
+            <Tab label="TodoList" textColor="secondary" value="/todolist" component={Link} to="/todolist" />
+          </Tabs>
+        </nav>
     
     <Routes>
       <Route path="/" element={<Home />} />
