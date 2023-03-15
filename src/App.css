@@ -2,12 +2,13 @@
   text-align: center;
   
 }
-.todo {
-  text-align: center;
-}
+
+
+
 
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 .nav h1 {
