@@ -32,7 +32,7 @@ function TodoList() {
       const deleteTodo = () => {
             if (gridRef.current.getSelectedNodes().length > 0) {
                   setTodos(todos.filter((todo, index) =>
-                        index !== gridRef.current.getSelectedNodes()[0].childIndex))
+                        index !== parseInt(gridRef.current.getSelectedNodes()[0].id)))
             }
             else {
                   alert('You have to select a row');
