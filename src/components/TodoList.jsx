@@ -7,14 +7,18 @@ import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import moment from "moment";
+import dayjs from 'dayjs';
 
 
 
 function TodoList() {
-  const [todo, setTodo] = useState({ description: '', date: null, priority: '' });
+  const now=dayjs();
+  const [todo, setTodo] = useState({ description: '', date: now.format('DD.MM.YYYY'), priority: '' });
+  const [dateInput, setDateInput] = useState(now);
   const [todos, setTodos] = useState([]);
   const gridRef = useRef();
+
+  
   
 
  
@@ -42,9 +46,10 @@ function TodoList() {
       setTodo({ ...todo, [event.target.name]: event.target.value });
     };
 
-    const dateChanged = (date) => {
-     const newDate = moment(date).format('DD/MM/YYYY');
-      setTodo({ ...todo, date: newDate });
+    const dateInputChanged = (date) => {
+      console.log(date);
+     setTodo({ ...todo, date: date.format('DD.MM.YYYY')});
+     setDateInput(date);
     };
 
   const deleteTodo = () => {
@@ -63,7 +68,7 @@ function TodoList() {
         </div><div className='todo'>
                     <h1>Todolist</h1>
                     <TextField onChange={inputChanged} label='Description' name='description' value={todo.description} />
-                    <DatePicker inputFormat='ddMMyyyy' onChange={dateChanged} label="DD/MM/Year" name="date" value={todo.date} />
+                    <DatePicker inputFormat='ddMMyyyy' onChange={dateInputChanged} label="DD/MM/Year" name="date" value={dateInput} />
                     <TextField onChange={inputChanged} label='Priority' name='priority' value={todo.priority} />
                     <Button onClick={addTodo} variant='contained' color='success' size='small'>
                           Add
